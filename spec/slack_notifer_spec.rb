@@ -37,5 +37,8 @@ class SlackNotifierTest < Minitest::Spec
       _(attachment[:fallback]).must_include pull_request['html_url']
     end
 
+    it 'can only mention for someone other than owner' do
+      _(slack.name).wont_equal 'UXUXU'
+    end
   end
 end
