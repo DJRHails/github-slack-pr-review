@@ -38,6 +38,8 @@ class SlackNotifierTest < Minitest::Spec
     end
 
     it 'can only mention for someone other than owner' do
+      valid_ids = slack.send(:valid_ids)
+      assert_equal 1, valid_ids.size
       _(slack.name).wont_equal 'UXUXU'
     end
   end
