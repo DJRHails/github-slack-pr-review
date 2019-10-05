@@ -4,7 +4,7 @@ Bundler.require :default, :test
 require 'minitest/spec'
 require 'minitest/pride'
 require 'minitest/autorun'
-require 'mocha/mini_test'
+require 'mocha/minitest'
 
 ENV['SLACK_NAMES'] ||= 'UXUXU,ADADA'
 ENV['GITHUB_NAMES'] ||= 'Name1,Name2'
