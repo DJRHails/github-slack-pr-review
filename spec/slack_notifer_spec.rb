@@ -17,24 +17,25 @@ class SlackNotifierTest < Minitest::Spec
       payload[:attachments].first
     }
 
+    let(:text) {
+      payload[:blocks].first[:text][:text]
+    }
+
     it 'has an icon' do
-      payload[:icon_url].wont_be :nil?
+      _(payload[:icon_url]).wont_be :nil?
     end
 
     it 'has a username' do
-      payload[:username].must_equal 'GitHub PR Assignment'
+      _(payload[:username]).must_equal SlackNotifier::SLACK_USERNAME
     end
 
-    it 'has an attachment fallback that notifies a specific user' do
-      attachment[:fallback].must_include slack.name
+    it 'contains text that mentions a specific user' do
+      _(text).must_include "<@#{slack.name}>"
     end
 
     it 'has an attachment fallback that provides a link' do
-      attachment[:fallback].must_include pull_request['html_url']
+      _(attachment[:fallback]).must_include pull_request['html_url']
     end
 
-    it 'has an attachment pretext that notifies a specific user' do
-      attachment[:pretext].must_include slack.name
-    end
   end
 end
