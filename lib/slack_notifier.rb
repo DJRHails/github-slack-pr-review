@@ -6,7 +6,7 @@ class SlackNotifier
 
   def initialize(pull_request)
     @pull_request = pull_request
-    @name = ENV['SLACK_NAMES'].split(',').sample
+    @name = valid_ids.sample
   end
 
   def notify
@@ -33,6 +33,14 @@ class SlackNotifier
   end
 
   private
+
+  def valid_ids
+    owner = pull_request['user']['login']
+    gh_users = ENV['GITHUB_NAMES'].split(',')
+    valid_ids = ENV['SLACK_NAMES'].split(',')
+    valid_ids.delete_at(gh_users.find_index(owner))
+    valid_ids
+  end
 
   def headers
     { 'Content-Type' => 'application/json' }
