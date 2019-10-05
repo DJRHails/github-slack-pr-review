@@ -7,6 +7,7 @@ require 'minitest/autorun'
 require 'mocha/mini_test'
 
 ENV['SLACK_NAMES'] ||= 'UXUXU,ADADA'
+ENV['GITHUB_NAMES'] ||= 'Name1,Name2'
 
 module GithubHelpers
   REQUEST_FIXTURE = File.expand_path('../fixtures/request.json', __FILE__)
