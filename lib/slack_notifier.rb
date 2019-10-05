@@ -19,8 +19,8 @@ class SlackNotifier
       attachments: [{
         title: pull_request['title'],
         title_link: link,
-        fallback: "@#{name}, please review this PR: #{link}",
-        pretext: "@#{name}, please review this PR:"
+        fallback: "Hey <@#{name}>, please review this PR: #{link}",
+        pretext: "Hey <@#{name}>, please review this PR:"
       }]
     }
   end
