@@ -1,6 +1,7 @@
 require 'json'
 
 class SlackNotifier
+  SLACK_USERNAME = 'Natasha'
   attr_reader :name, :pull_request
 
   def initialize(pull_request)
@@ -15,7 +16,7 @@ class SlackNotifier
   def payload
     {
       icon_url: 'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png',
-      username: 'Natasha',
+      username: SLACK_USERNAME,
       blocks: [{
            type: "section",
            text: {
