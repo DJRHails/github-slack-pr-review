@@ -16,11 +16,17 @@ class SlackNotifier
     {
       icon_url: 'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png',
       username: 'GitHub PR Assignment',
+      blocks: [{
+           type: "section",
+           text: {
+             type: "mrkdwn",
+             text: "Hey <@#{name}>, please review this PR"
+           }
+         }],
       attachments: [{
         title: pull_request['title'],
         title_link: link,
-        fallback: "Hey <@#{name}>, please review this PR: #{link}",
-        pretext: "Hey <@#{name}>, please review this PR:"
+        fallback: "#{link}",
       }]
     }
   end
