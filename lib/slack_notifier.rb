@@ -15,12 +15,12 @@ class SlackNotifier
   def payload
     {
       icon_url: 'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png',
-      username: 'GitHub PR Assignment',
+      username: 'Natasha',
       blocks: [{
            type: "section",
            text: {
              type: "mrkdwn",
-             text: "Hey <@#{name}>, please review this PR"
+             text: "Hey <@#{name}>, can you review this PR?"
            }
          }],
       attachments: [{
